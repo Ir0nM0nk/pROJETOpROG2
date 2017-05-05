@@ -11,7 +11,7 @@ FINALIDADE:
 #include <sstream>
 #include <vector>
 #include <string>
-
+#include "Line.h"
 #include "structs.h"
 #include "auxfunc.h"			//eraseExtraSpaces()
 
@@ -66,13 +66,13 @@ sobre a linha
 */
 line decomposeLine(const string &inputLine)
 {
-	line lineStruct;
+	line NewLine;
 
 	istringstream lineStr(inputLine);
 	string input;
 
 	getline(lineStr, input, ';');		
-	lineStruct.id = stoi(input);		//guarda id
+	line::setId(lineStr);				//guarda id
 										//stoi tranforma string num número inteiro
 	getline(lineStr, input, ';');
 	lineStruct.busFreq = stoi(input);	//guarda frequência
@@ -117,12 +117,15 @@ Armazena os dados relativos a um condutor na struct "driver"
 */
 driver decomposeDriver(const string &inputLine)
 {
+	line Newline;
 	driver driverStruct;
+
 
 	istringstream driverStr(inputLine);
 	string input;
 
 	getline(driverStr, input, ';');				// lê id
+
 	driverStruct.id = stoi(input);				// guarda o id na struct
 
 	getline(driverStr, input, ';');				// lê nome

@@ -13,7 +13,7 @@ using namespace std;
 
 int line::getId() const
 {
-	return 0;
+	return id;
 }
 
 void line::setId(int)
